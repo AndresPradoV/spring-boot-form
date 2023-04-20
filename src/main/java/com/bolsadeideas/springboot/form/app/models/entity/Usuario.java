@@ -19,7 +19,6 @@ public class Usuario {
 
 	//Se agrega un comentario por ramaPrado
   
-	//Se agrega un comentario en la rama Main
 
 	private String identificador;
 	
