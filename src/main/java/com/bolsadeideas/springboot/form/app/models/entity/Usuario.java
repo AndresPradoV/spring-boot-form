@@ -14,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Usuario {
 
 	//Se agrega comentario por otro lado
-	//Se agrega un comentario en la rama Main
+	//Se agrega un comentario en la ramaSilva
 	private String identificador;
 	
 	private String nombre;
