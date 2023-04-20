@@ -20,6 +20,7 @@ import com.bolsadeideas.springboot.form.app.validation.UsuarioValidador;
 @SessionAttributes("usuario")
 public class FormController {
 
+	//Se agrega un comentario
 	@Autowired
 	UsuarioValidador validador;
 	
