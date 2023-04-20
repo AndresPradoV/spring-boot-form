@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class Usuario {
 
+	//Se agrega comentario por otro lado
 	private String identificador;
 	
 	private String nombre;
