@@ -5,16 +5,18 @@
 <title th:text="${titulo}"></title>
 </head>
 <body>
-<div>
-Datos Personales
-<ul>
-<li th:text="${usuario.nombre}"></li>
-<li th:text="${usuario.username}"></li>
-<li th:text="${usuario.username}"></li>
-<li th:text="${usuario.password}"></li>
-<li th:text="${usuario.email}"></li>
-<li  th:text="${usuario.identificador}"></li>
-</ul>
-</div>
+	<div>
+		<h3>Datos Pesonales</h3>
+		<ul>
+			<li th:text="${usuario.identificador}"></li>
+			<li th:text="${usuario.nombre}"></li>
+			<li th:text="${usuario.apellido}"></li>
+			<li th:text="${usuario.username}"></li>
+			<li th:text="${usuario.password}"></li>
+			<li th:text="${usuario.email}"></li>
+			<li th:text="${usuario.cuenta}"></li>
+			<li th:text="${usuario.fechaNac}"></li>
+		</ul>
+	</div>
 </body>
 </html>

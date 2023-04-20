@@ -1,31 +1,37 @@
 package com.bolsadeideas.springboot.form.app.models.entity;
 
+import java.util.Date;
+
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Usuario {
 
-	@Pattern(regexp = "[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][A-Z]{1}")
 	private String identificador;
 	
-	@NotEmpty
 	private String nombre;
 	
-	@NotEmpty
 	private String apellido;
-	
-	@NotEmpty
-	@Size(min = 3, max = 8)
+
 	private String username;
 	
-	@NotEmpty
 	private String password;
-	
-	@NotEmpty
+
 	@Email
 	private String email;
+	
+	@Min(value = 2)
+	@Max(value = 11)
+	private Integer cuenta;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date fechaNac;
 
 	public String getUsername() {
 		return username;
@@ -75,5 +81,20 @@ public class Usuario {
 		this.identificador = identificador;
 	}
 
+	public Integer getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Integer cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
+	}
 	
 }

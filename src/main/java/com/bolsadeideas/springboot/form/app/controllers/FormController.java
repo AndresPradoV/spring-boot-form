@@ -2,26 +2,38 @@ package com.bolsadeideas.springboot.form.app.controllers;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.bolsadeideas.springboot.form.app.models.entity.Usuario;
+import com.bolsadeideas.springboot.form.app.validation.UsuarioValidador;
 
 @Controller
 @SessionAttributes("usuario")
 public class FormController {
 
+	@Autowired
+	UsuarioValidador validador;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.addValidators(validador);
+	}
+	
 	// Dos metodos handler
 	// Uno para mostrar el formulario (GET)
 	@GetMapping({ "/", "/form" })
 	public String form(Model model) {
 		Usuario usuario = new Usuario();
-		model.addAttribute("titulo", "Hola soy un titulo XD");
+		model.addAttribute("titulo", "FORMULARIO");
 		
 		usuario.setNombre("Andres");
 		usuario.setApellido("Prado");
@@ -35,13 +47,15 @@ public class FormController {
 	@PostMapping("/form")
 	public String procesarFormulario(@Valid Usuario usuario, BindingResult result, SessionStatus status, Model model) {
 
+		model.addAttribute("titulo", "FORM RESULTADO");		
+		
 		if (result.hasErrors()) {
 			
 			return "form";
 		}
 
 		model.addAttribute("usuario", usuario);
-		model.addAttribute("titulo", "Area de resultado");
+		
 		status.setComplete();
 
 		return "resultado";
